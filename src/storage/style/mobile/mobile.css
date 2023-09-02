@@ -1,0 +1,48 @@
+:root {
+  --mobile-nav-height: 3rem;
+  --mobile-banner-height: 15rem;
+}
+
+/*? Mobile only */
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #root {
+    padding-bottom: calc(2 * var(--mobile-nav-height));
+  }
+
+  nav {
+    height: var(--mobile-nav-height);
+    bottom: 0;
+    overflow: visible;
+  }
+
+  #home {
+    outline: 1px solid black;
+    height: calc(2 * var(--mobile-nav-height));
+    width: calc(2 * var(--mobile-nav-height));
+    border-radius: 100%;
+    position: relative;
+    top: calc(-0.5 * var(--mobile-nav-height));
+  }
+
+  .button {
+    height: 100%;
+    width: calc(25vw - 0.5 * var(--mobile-nav-height));
+  }
+
+  main {
+    height: calc(100vh - var(--mobile-nav-height));
+    top: 0;
+  }
+
+  section#banner {
+    height: var(--mobile-banner-height);
+  }
+}

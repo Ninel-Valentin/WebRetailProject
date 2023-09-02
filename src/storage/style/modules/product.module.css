@@ -1,0 +1,155 @@
+:root {
+  --product-info-width: 60vw;
+  --retail-info-width: 30vw;
+
+  --img-preview-size: 30vw;
+  --img-carousell-size: 5vw;
+
+  --a2c-width: 12rem;
+  --a2c-height: 3rem;
+}
+
+.lineTitle {
+  width: 80%;
+  margin: 2rem 10%;
+}
+
+.productInfo {
+  width: var(--product-info-width);
+  min-height: 50vh;
+  float: left;
+}
+
+.productInfo > img {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  outline: 1px solid black;
+  aspect-ratio: 1;
+}
+
+img.imgPreview {
+  background-image: url("/public/storage/images/products/1CB7B308-8C52-4C3A-A64A-DE95A0793544.png");
+  width: var(--img-preview-size);
+  position: relative;
+  left: calc((var(--product-info-width) - var(--img-preview-size)) / 2);
+}
+
+section.imgCarousell {
+  width: var(--img-preview-size);
+  position: relative;
+  left: calc((var(--product-info-width) - var(--img-preview-size)) / 2);
+  height: var(--img-carousell-size);
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+}
+
+.imgCarousellItem {
+  height: var(--img-carousell-size);
+  aspect-ratio: 1;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.retailInfo {
+  width: var(--retail-info-width);
+  min-height: 50vh;
+  float: right;
+  outline: 1px solid black;
+  margin-right: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.retailInfo,
+.retailInfo * {
+  font-family: cursive;
+}
+
+.retailerInfoRow {
+  font-size: xx-large;
+  margin: 1rem 2rem;
+}
+
+.brandHighlight {
+  color: blue;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button.mainButton {
+  outline: black 1px solid;
+  border-radius: 25px;
+  width: var(--a2c--width);
+  height: var(--a2c-height);
+  font-size: x-large;
+  position: relative;
+}
+
+.breadCrumbsItem {
+  color: var(--color-bg-light-active);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.breadCrumbsItem:hover {
+  color: var(--color-bg-medium-active);
+}
+
+.detailsSeparator {
+  width: 95vw;
+  position: relative;
+  left: 2.5vw;
+  border: none;
+  padding-top: 50px;
+  border-bottom: 1px solid black;
+}
+
+.descriptionBox {
+  width: 90vw;
+  position: relative;
+  left: 5vw;
+  font-size: x-large;
+  margin: 3rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .lineTitle {
+    width: 96vw;
+    margin: 0.5rem 2vw;
+    font-size: x-large;
+  }
+
+  .breadCrumbsItem {
+    font-size: 1rem;
+  }
+
+  .productInfo {
+    width: 100%;
+  }
+
+  img.imgPreview {
+    width: 70vw;
+    margin: 0.5rem 15vw;
+    left: 0;
+  }
+
+  section.imgCarousell {
+    height: 5rem;
+    width: 90vw;
+    margin: 0.5rem 5vw;
+    left: 0;
+  }
+
+  .imgCarousellItem {
+    height: 4.5rem;
+    margin: 2.5rem 1rem;
+  }
+
+  .retailInfo {
+    width: 100vw;
+    margin: 0;
+  }
+}

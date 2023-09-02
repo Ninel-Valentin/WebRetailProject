@@ -1,0 +1,7 @@
+- Freepik -
+* SVGs:
+    Wishlist
+    Cart
+    Home
+    Profile
+    Menu

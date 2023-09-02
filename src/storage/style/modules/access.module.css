@@ -1,0 +1,238 @@
+:root {
+  --desktop-panel-width: 40vw;
+  --desktop-panel-height: 85vh;
+
+  --mobile-panel-large-height: 70vh;
+  --mobile-panel-small-height: calc(
+    var(--desktop-panel-height) - var(--mobile-panel-large-height)
+  );
+}
+
+.accessContainer {
+  background-color: brown;
+  width: calc(2 * var(--desktop-panel-width));
+  height: var(--desktop-panel-height);
+  margin: 2% 10% 0;
+  overflow: hidden;
+}
+
+.panelContainer {
+  height: 100%;
+  display: flex;
+}
+
+section#frontPanels {
+  position: relative;
+  top: calc(-1 * var(--desktop-panel-height));
+}
+
+.panel {
+  background-color: var(--color-contrast);
+  width: var(--desktop-panel-width);
+  height: var(--desktop-panel-height);
+  display: inline-block;
+  box-shadow: inset 0 0 1px 0 var(--color-highlight-blue);
+  color: var(--color-primary-blue);
+}
+
+section#frontPanels .panel {
+  background-color: var(--color-primary-blue) !important;
+  color: var(--color-contrast);
+}
+
+section#frontPanels .panel:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section#backPanels .panel:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 1rem 0 0;
+}
+
+h4 {
+  text-align: center;
+  color: gray;
+}
+
+.accessForm,
+.formRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formRow {
+  margin: 0.2rem 0;
+}
+
+.centerText {
+  text-align: center;
+  width: fit-content;
+  margin: 1rem auto;
+}
+
+.switchPanel {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.accessForm span.required {
+  color: indianred;
+  font-weight: bolder;
+}
+
+.accessForm p.requiredWarning {
+  color: red;
+  font-size: 0.75rem;
+}
+
+.accessForm input,
+.accessForm select {
+  all: unset;
+  width: 15rem;
+  background-color: var(--color-highlight-blue);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5px;
+  color: var(--color-contrast);
+}
+
+.accessForm input::placeholder,
+.accessForm select::placeholder {
+  color: var(--color-contrast-placeholder);
+}
+
+#logInButton,
+#signUpButton {
+  background-color: var(--color-highlight-blue);
+  border: 1px solid var(--color-secondary-blue);
+  color: var(--color-contrast);
+  width: 7rem;
+  height: 2rem;
+  border-radius: 0 25px;
+  margin: 25px 0 0;
+  transition: border-radius 0.1s ease-in-out, background-color 0.1s ease-in-out,
+    border 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+#logInButton:hover,
+#signUpButton:hover {
+  background-color: var(--color-contrast-blue);
+  border: 1px solid var(--color-highlight-blue);
+  color: var(--color-primary-blue);
+  border-radius: 25px 0;
+}
+
+#logInButton:active,
+#signUpButton:active {
+  background-color: var(--color-secondary-blue);
+  border: 1px solid var(--color-contrast-placeholder);
+  border-radius: 25px;
+}
+
+/* ?Desktop only */
+@media only screen and (min-width: 600px) {
+  section#frontPanels {
+    left: 0;
+    transition: left 0.2s ease-in;
+    width: var(--desktop-panel-width);
+  }
+
+  section#frontPanels.active {
+    left: var(--desktop-panel-width);
+  }
+
+  section#frontPanels .panel {
+    position: relative;
+    transition: width 0.2s ease-in;
+  }
+
+  section#frontPanels .panel:first-child {
+    width: 0;
+  }
+
+  section#frontPanels .panel:last-child {
+    width: var(--desktop-panel-width);
+  }
+
+  section#frontPanels.active .panel:first-child {
+    width: var(--desktop-panel-width);
+  }
+
+  section#frontPanels.active .panel:last-child {
+    width: 0;
+  }
+
+  section#frontPanels.active form {
+    display: none;
+  }
+
+  section#backPanels .panel:last-child,
+  section#frontPanels .panel:first-child {
+    font-size: 1.5rem;
+  }
+
+  .accessForm input,
+  .accessForm select {
+    height: 2rem;
+  }
+}
+
+/* ?Mobile only */
+@media only screen and (max-width: 600px) {
+  .panelContainer {
+    flex-direction: column;
+  }
+
+  section#frontPanels {
+    width: 100%;
+    top: calc(
+      -1 * var(--desktop-panel-height) - var(--mobile-panel-small-height)
+    );
+    transition: top 0.2s ease-in;
+  }
+
+  section#frontPanels.active {
+    top: calc(
+      -1 * var(--desktop-panel-height) + var(--mobile-panel-large-height)
+    );
+  }
+
+  .panel {
+    width: 100%;
+    display: block;
+  }
+
+  .panel:last-child {
+    height: var(--mobile-panel-small-height);
+  }
+
+  .panel:first-child {
+    height: var(--mobile-panel-large-height);
+  }
+
+  section#frontPanels .panel:first-child {
+    height: var(--mobile-panel-small-height);
+  }
+
+  section#frontPanels .panel:last-child {
+    height: var(--mobile-panel-large-height);
+  }
+
+  .accessForm input,
+  .accessForm select {
+    height: 1.5rem;
+  }
+}

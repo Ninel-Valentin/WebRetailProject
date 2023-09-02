@@ -1,0 +1,5 @@
+Doodle Store
+
+TODO:
+Add searchbar to the navbar
+Finish the counter of the shopping cart number

@@ -1,0 +1,47 @@
+section#banner {
+  background-color: white;
+  width: 100vw;
+  overflow: hidden;
+}
+
+div.bannerImgContainer {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  position: relative;
+  right: 0vw;
+  transition: right ease-out 0.3s;
+}
+
+div.bannerImgContainer > img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  position: relative;
+  pointer-events: none;
+}
+
+div#bannerPagination {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+div.bannerBullet {
+  background-color: var(--color-bg-light-hover);
+  height: var(--banner-bullet-size);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  outline: 1px solid var(--color-bg-light-active);
+  margin: 2px;
+  transition: background-color 0.5s, outline 0.5s;
+}
+
+div.bannerBullet.active {
+  background-color: var(--color-bg-light);
+  outline: 1px solid black;
+  transition: background-color 0.5s, outline 0.5s;
+}

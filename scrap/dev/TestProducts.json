@@ -1,0 +1,953 @@
+[
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart Home Security System",
+    "description": "Protect your home with our advanced Smart Home Security System.",
+    "category": "Electronics",
+    "sku": "XYZ456789",
+    "url": "https://www.product.com/XYZ456789",
+    "image": "/storage/images/Electronics_0.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "199.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 83
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Premium Leather Handbag",
+    "description": "Elevate your style with our luxurious Premium Leather Handbag.",
+    "category": "Fashion & Accessories",
+    "sku": "JKL345678",
+    "url": "https://www.product.com/JKL345678",
+    "image": "/storage/images/Fashion&Accessories_0.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "149.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 52
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "High-Performance Blender",
+    "description": "Blend with ease using our powerful High-Performance Blender.",
+    "category": "Home & Garden",
+    "sku": "MNO012345",
+    "url": "https://www.product.com/MNO012345",
+    "image": "/storage/images/Home&Garden_0.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "89.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 47
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Pro Gaming Mouse",
+    "description": "Take your gaming to the next level with our Pro Gaming Mouse.",
+    "category": "Electronics",
+    "sku": "PQR234567",
+    "url": "https://www.product.com/PQR234567",
+    "image": "/storage/images/Electronics_1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "69.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 4
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Fitness Tracker Watch",
+    "description": "Stay on top of your fitness goals with our Fitness Tracker Watch.",
+    "category": "Sports & Outdoors",
+    "sku": "STU456789",
+    "url": "https://www.product.com/STU456789",
+    "image": "/storage/images/Sports&Outdoors_0.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 92
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Wireless Noise-Canceling Headphones",
+    "description": "Immerse yourself in music with our Wireless Noise-Canceling Headphones.",
+    "category": "Electronics",
+    "sku": "VWX567890",
+    "url": "https://www.product.com/VWX567890",
+    "image": "/storage/images/Electronics_2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 98
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Classic Aviator Sunglasses",
+    "description": "Make a fashion statement with our Classic Aviator Sunglasses.",
+    "category": "Fashion & Accessories",
+    "sku": "BCD678901",
+    "url": "https://www.product.com/BCD678901",
+    "image": "/storage/images/Fashion&Accessories_1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "59.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 72
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Stainless Steel Cookware Set",
+    "description": "Upgrade your kitchen with our durable Stainless Steel Cookware Set.",
+    "category": "Home & Garden",
+    "sku": "EFG789012",
+    "url": "https://www.product.com/EFG789012",
+    "image": "/storage/images/Home&Garden_1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "199.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 7
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Mechanical Gaming Keyboard",
+    "description": "Enhance your gaming experience with our Mechanical Gaming Keyboard.",
+    "category": "Electronics",
+    "sku": "HIJ901234",
+    "url": "https://www.product.com/HIJ901234",
+    "image": "/storage/images/Electronics_3.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "89.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 91
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Portable Camping Hammock",
+    "description": "Relax and unwind in nature with our Portable Camping Hammock.",
+    "category": "Sports & Outdoors",
+    "sku": "LMN012345",
+    "url": "https://www.product.com/LMN012345",
+    "image": "/storage/images/Sports&Outdoors_1.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "39.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 33
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Smart Home Thermostat",
+    "description": "Control your home's temperature with our Smart Home Thermostat.",
+    "category": "Home & Garden",
+    "sku": "XYZ567890",
+    "url": "https://www.product.com/XYZ567890",
+    "image": "/storage/images/Home&Garden_2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 83
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Wireless Charging Pad",
+    "description": "Charge your devices wirelessly with our convenient Wireless Charging Pad.",
+    "category": "Electronics",
+    "sku": "JKL678901",
+    "url": "https://www.product.com/JKL678901",
+    "image": "/storage/images/Electronics_4.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "39.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 59
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Designer Leather Wallet",
+    "description": "Organize your essentials with our stylish Designer Leather Wallet.",
+    "category": "Fashion & Accessories",
+    "sku": "MNO789012",
+    "url": "https://www.product.com/MNO789012",
+    "image": "/storage/images/Fashion&Accessories_2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 46
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "4K Ultra HD Smart TV",
+    "description": "Experience stunning visuals with our 4K Ultra HD Smart TV.",
+    "category": "Electronics",
+    "sku": "PQR901234",
+    "url": "https://www.product.com/PQR901234",
+    "image": "/storage/images/Electronics_5.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "699.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 18
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Waterproof Fitness Shoes",
+    "description": "Enhance your fitness experience with our Waterproof Fitness Shoes..",
+    "category": "Sports & Outdoors",
+    "sku": "STU890123",
+    "url": "https://www.product.com/STU890123",
+    "image": "/storage/images/Sports&Outdoors_2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "89.99",
+      "priceCurrency": "USD",
+      "currencySymbol": "$",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 28
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart Home Security Camera",
+    "description": "Monitor your home remotely with our Smart Home Security Camera.",
+    "category": "Electronics",
+    "sku": "VWX012345",
+    "url": "https://www.product.com/VWX012345",
+    "image": "/storage/images/Electronics_6.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 77
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Designer Men's Watch",
+    "description": "Make a statement with our sophisticated Designer Men's Watch.",
+    "category": "Fashion & Accessories",
+    "sku": "BCD234567",
+    "url": "https://www.product.com/BCD234567",
+    "image": "/storage/images/Fashion&Accessories_3.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "199.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 17
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Bio Recycled Plastic Casserole Set",
+    "description": "Store meals with our Bio Recycled Plastic Casserole Set.",
+    "category": "Home & Garden",
+    "sku": "EFG345678",
+    "url": "https://www.product.com/EFG345678",
+    "image": "/storage/images/Home&Garden_3.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 54
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Wireless Gaming Controller",
+    "description": "Game without limits with our Wireless Gaming Controller.",
+    "category": "Electronics",
+    "sku": "HIJ456789",
+    "url": "https://www.product.com/HIJ456789",
+    "image": "/storage/images/Electronics_7.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 76
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Foldable Camping Chair",
+    "description": "Relax in comfort during your camping trips with our Foldable Camping Chair.",
+    "category": "Sports & Outdoors",
+    "sku": "LMN789012",
+    "url": "https://www.product.com/LMN789012",
+    "image": "/storage/images/Sports&Outdoors_3.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "29.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 37
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Smart Home Assistant",
+    "description": "Control your smart home with our Smart Home Assistant.",
+    "category": "Home & Garden",
+    "sku": "XYZ567890",
+    "url": "https://www.product.com/XYZ567890",
+    "image": "/storage/images/Home&Garden_4.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 96
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Super Phone Charger",
+    "description": "Charge your devices with our convenient Super Phone Charger.",
+    "category": "Electronics",
+    "sku": "JKL678901",
+    "url": "https://www.product.com/JKL678901",
+    "image": "/storage/images/Electronics_8.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "39.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/OutOfStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 0
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Designer Checkered Tie",
+    "description": "Be sure to tie up your outfit with our stylish Designer Checkered Tie.",
+    "category": "Fashion & Accessories",
+    "sku": "MNO789012",
+    "url": "https://www.product.com/MNO789012",
+    "image": "https://example.com/images/designer-leather-wallet.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 10
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "4K Ultra HD Smart TV",
+    "description": "Experience stunning visuals with our 4K Ultra HD Smart TV.",
+    "category": "Electronics",
+    "sku": "PQR901234",
+    "url": "https://www.product.com/PQR901234",
+    "image": "https://example.com/images/4k-ultra-hd-smart-tv.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "699.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 38
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Cool Sunglasses",
+    "description": "Be Kenough with our Cool Sunglasses during your workouts.",
+    "category": "Sports & Outdoors",
+    "sku": "STU890123",
+    "url": "https://www.product.com/STU890123",
+    "image": "/storage/images/Sports&Outdoors_9.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "89.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/OutOfStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 0
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart Home Security Camera",
+    "description": "Monitor your home remotely with our Smart Home Security Camera.",
+    "category": "Electronics",
+    "sku": "VWX012345",
+    "url": "https://www.product.com/VWX012345",
+    "image": "https://example.com/images/smart-home-security-camera.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 38
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Designer Men's Watch",
+    "description": "Make a statement with our sophisticated Designer Men's Watch.",
+    "category": "Fashion & Accessories",
+    "sku": "BCD234567",
+    "url": "https://www.product.com/BCD234567",
+    "image": "https://example.com/images/designer-mens-watch.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "199.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/Discontinued",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": null
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Ceramic Non-Stick Cookware Set",
+    "description": "Cook healthier meals with our Ceramic Non-Stick Cookware Set.",
+    "category": "Home & Garden",
+    "sku": "EFG345678",
+    "url": "https://www.product.com/EFG345678",
+    "image": "https://example.com/images/ceramic-non-stick-cookware-set.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/OutOfStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 0
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Wireless Gaming Controller",
+    "description": "Game without limits with our Wireless Gaming Controller.",
+    "category": "Electronics",
+    "sku": "HIJ456789",
+    "url": "https://www.product.com/HIJ456789",
+    "image": "https://example.com/images/wireless-gaming-controller.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 15
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "New Era Electrical Bike",
+    "description": "Relax and train your stamina in comfort during your fitness workouts with our New Era Electrical Bike.",
+    "category": "Sports & Outdoors",
+    "sku": "LMN789012",
+    "url": "https://www.product.com/LMN789012",
+    "image": "/storage/images/Sports&Outdoors_5.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "29.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/Discontinued",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": null
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Bluetooth Wireless Earbuds",
+    "description": "Enjoy your music on the go with our Bluetooth Wireless Earbuds.",
+    "category": "Electronics",
+    "sku": "OPQ678901",
+    "url": "https://www.product.com/OPQ678901",
+    "image": "https://example.com/images/bluetooth-wireless-earbuds.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "59.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 11
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Leather Messenger Bag",
+    "description": "Carry your essentials in style with our Leather Messenger Bag.",
+    "category": "Fashion & Accessories",
+    "sku": "RST789012",
+    "url": "https://www.product.com/RST789012",
+    "image": "https://example.com/images/leather-messenger-bag.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "119.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 82
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Robot Vacuum Cleaner",
+    "description": "Keep your floors clean effortlessly with our Robot Vacuum Cleaner.",
+    "category": "Home & Garden",
+    "sku": "UVW901234",
+    "url": "https://www.product.com/UVW901234",
+    "image": "https://example.com/images/robot-vacuum-cleaner.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "249.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 80
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Wireless Gaming Headset",
+    "description": "Immerse yourself in gaming with our Wireless Gaming Headset.",
+    "category": "Electronics",
+    "sku": "XYZ234567",
+    "url": "https://www.product.com/XYZ234567",
+    "image": "https://example.com/images/wireless-gaming-headset.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "89.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/OutOfStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 0
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Running Shoes",
+    "description": "Enhance your running experience with our high-performance Running Shoes.",
+    "category": "Sports & Outdoors",
+    "sku": "JKL567890",
+    "url": "https://www.product.com/JKL567890",
+    "image": "/storage/images/Sports&Outdoors_4.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "79.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 77
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart Doorbell Camera",
+    "description": "See who's at your door from anywhere with our Smart Doorbell Camera.",
+    "category": "Electronics",
+    "sku": "MNO789012",
+    "url": "https://www.product.com/MNO789012",
+    "image": "https://example.com/images/smart-doorbell-camera.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "139.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 40
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Stylish Sunglasses",
+    "description": "Protect your eyes in style with our Trendy Sunglasses.",
+    "category": "Fashion & Accessories",
+    "sku": "PQR234567",
+    "url": "https://www.product.com/PQR234567",
+    "image": "https://example.com/images/stylish-sunglasses.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 64
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Air Fryer",
+    "description": "Cook healthier meals with our efficient Air Fryer.",
+    "category": "Home & Garden",
+    "sku": "STU345678",
+    "url": "https://www.product.com/STU345678",
+    "image": "https://example.com/images/air-fryer.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "129.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 63
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Virtual Reality Headset",
+    "description": "Step into virtual worlds with our immersive Virtual Reality Headset.",
+    "category": "Electronics",
+    "sku": "UVW456789",
+    "url": "https://www.product.com/UVW456789",
+    "image": "https://example.com/images/virtual-reality-headset.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "159.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 60
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Yoga Mat",
+    "description": "Improve your yoga practice with our comfortable and non-slip Yoga Mat.",
+    "category": "Sports & Outdoors",
+    "sku": "BCD789012",
+    "url": "https://www.product.com/BCD789012",
+    "image": "/storage/images/Sports&Outdoors_8.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "29.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 47
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Wireless Keyboard and Mouse Combo",
+    "description": "Stay productive with our Wireless Keyboard and Mouse Combo.",
+    "category": "Electronics",
+    "sku": "HIJ345678",
+    "url": "https://www.product.com/HIJ345678",
+    "image": "https://example.com/images/wireless-keyboard-mouse-combo.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 56
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Leather Wallet with RFID Blocking",
+    "description": "Protect your cards with our Leather Wallet featuring RFID blocking.",
+    "category": "Fashion & Accessories",
+    "sku": "JKL890123",
+    "url": "https://www.product.com/JKL890123",
+    "image": "https://example.com/images/leather-wallet-rfid-blocking.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "39.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/OutOfStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 0
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Portable Bluetooth Speaker",
+    "description": "Enjoy your favorite music on the go with our Portable Bluetooth Speaker.",
+    "category": "Electronics",
+    "sku": "OPQ234567",
+    "url": "https://www.product.com/OPQ234567",
+    "image": "https://example.com/images/portable-bluetooth-speaker.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "29.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 9
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Dumbbell Set",
+    "description": "Build strength and tone muscles with our Dumbbell Set.",
+    "category": "Sports & Outdoors",
+    "sku": "UVW567890",
+    "url": "https://www.product.com/UVW567890",
+    "image": "/storage/images/Sports&Outdoors_6.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "99.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 49
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart LED Light Bulb",
+    "description": "Illuminate your home with our Smart LED Light Bulb.",
+    "category": "Electronics",
+    "sku": "RST901234",
+    "url": "https://www.product.com/RST901234",
+    "image": "https://example.com/images/smart-led-light-bulb.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 3
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Luxora",
+    "name": "Fashionable Women's Handbag",
+    "description": "Complete your look with our Fashionable Women's Handbag.",
+    "category": "Fashion & Accessories",
+    "sku": "XYZ789012",
+    "url": "https://www.product.com/XYZ789012",
+    "image": "https://example.com/images/fashionable-womens-handbag.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "69.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 69
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "QuikPlus",
+    "name": "Countertop Blender",
+    "description": "Blend smoothies and more with our powerful Countertop Blender.",
+    "category": "Home & Garden",
+    "sku": "STU456789",
+    "url": "https://www.product.com/STU456789",
+    "image": "https://example.com/images/countertop-blender.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "49.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 58
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Fizzix",
+    "name": "Gaming Mouse",
+    "description": "Gain a competitive edge with our high-performance Gaming Mouse.",
+    "category": "Electronics",
+    "sku": "BCD678901",
+    "url": "https://www.product.com/BCD678901",
+    "image": "https://example.com/images/gaming-mouse.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "59.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 15
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "TruWave",
+    "name": "Resistance Bands Set",
+    "description": "Workout anywhere with our versatile Resistance Bands Set.",
+    "category": "Sports & Outdoors",
+    "sku": "OPQ456789",
+    "url": "https://www.product.com/OPQ456789",
+    "image": "/storage/images/Sports&Outdoors_7.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "24.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 23
+    }
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "brand": "Zentrox",
+    "name": "Smart Wi-Fi Plug",
+    "description": "Control your devices remotely with our Smart Wi-Fi Plug.",
+    "category": "Electronics",
+    "sku": "MNO345678",
+    "url": "https://www.product.com/MNO345678",
+    "image": "https://example.com/images/smart-wifi-plug.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "inventoryLevel": 14
+    }
+  }
+]
