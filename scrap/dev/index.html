@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --custom-select-option-width: 10rem;
+        --custom-select-scroll-width: 0.5rem;
+      }
+
+      .customSelect {
+        user-select: none;
+      }
+
+      .customSelectDisplay {
+        background-color: gray;
+        width: calc(
+          var(--custom-select-option-width) + var(--custom-select-scroll-width)
+        );
+        height: 2rem;
+        outline: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .customSelectContent {
+        list-style: none;
+        outline: 1px solid black;
+        max-height: 10rem;
+        width: calc(
+          var(--custom-select-option-width) + var(--custom-select-scroll-width)
+        );
+        overflow-y: scroll;
+        margin: 0;
+        padding: 0;
+      }
+
+      .customSelect.active .customSelectContent {
+        height: 0;
+        outline: none;
+        transition: height 0.2s ease-in;
+      }
+
+      /* width */
+      .customSelectContent::-webkit-scrollbar {
+        width: var(--custom-select-scroll-width);
+      }
+
+      /* Track */
+      .customSelectContent::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Handle */
+      .customSelectContent::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      /* Handle on hover */
+      .customSelectContent::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .customSelectContent li {
+        background-color: gray;
+        width: var(--custom-select-option-width);
+        height: 1.7rem;
+        outline: 1px solid black;
+        position: relative;
+        left: 0;
+        overflow: hidden;
+        transition: height 0.5s ease-in;
+      }
+
+      .customSelectDisplay:hover,
+      .customSelectContent li:hover {
+        background-color: gainsboro;
+        cursor: pointer;
+      }
+
+      .customSelectDisplay:active,
+      .customSelectContent li:active {
+        background-color: white;
+      }
+
+      .customSelectArrow {
+        height: 100%;
+        aspect-ratio: 1;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="customSelect active"
+      onclick="this.className = `customSelect${this.className.includes('active') ? '' : ' active'}`;this.querySelector('.customSelectArrow').innerText = this.className.includes('active') ? '▼' : '▲'"
+    >
+      <div class="customSelectDisplay">
+        <div class="customSelectPlaceHolder">Selected option</div>
+        <div class="customSelectArrow">▼</div>
+      </div>
+      <ul class="customSelectContent">
+        <li>option 1</li>
+        <li>option 2</li>
+        <li>option 3</li>
+        <li>option 4</li>
+        <li>option 5</li>
+        <li>option 6</li>
+        <li>option 7</li>
+        <li>option 8</li>
+        <li>option 9</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -314,3 +314,34 @@ CREATE TABLE Reviews
     ReviewTitle VARCHAR(255) NOT NULL,
     RatingSourceValue INT NOT NULL
 );
+
+CREATE TABLE Roles
+(
+    Id VARCHAR(50) NOT NULL PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    ViewAdmin BIT NOT NULL DEFAULT(0),
+    EditAdmin BIT NOT NULL DEFAULT(0),
+    EditSellerAccount BIT NOT NULL DEFAULT(0),
+    EditAccount BIT NOT NULL DEFAULT(0),
+    ViewAccess BIT NOT NULL DEFAULT(0),
+    ChangeAccountType BIT NOT NULL DEFAULT(0)
+);
+
+INSERT INTO Roles
+VALUES
+    ((SELECT NEWID()), 'Admin', 1, 1, 0, 1, 0, 1),
+    ((SELECT NEWID()), 'Supervisor', 1, 0, 0, 1, 0, 0),
+    ((SELECT NEWID()), 'User', 0, 0, 0, 1, 0, 0),
+    ((SELECT NEWID()), 'Guest', 0, 0, 0, 0, 1, 0),
+    ((SELECT NEWID()), 'Seller', 0, 0, 1, 1, 0, 0);
+
+
+/*
+Description |admin dashboard|admin dashboard|   seller dashboard    | personal acc details |  logged off to see | preview page from other role  |
+    Role    |   ViewAdmin   |   EditAdmin   |   EditSellerAccount   |      EditAccount     |      ViewAccess    |       ChangeAccountType       |
+    User    |       x       |       x       |           x           |           o          |          x         |               x               |
+    Guest   |       x       |       x       |           x           |           x          |          o         |               x               |
+    Admin   |       o       |       o       |           x           |           o          |          x         |               o               |
+  Supervisor|       o       |       x       |           x           |           o          |          x         |               x               |
+    Seller  |       x       |       x       |           o           |           o          |          x         |               x               |
+*/

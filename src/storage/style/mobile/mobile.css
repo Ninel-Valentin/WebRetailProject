@@ -45,4 +45,8 @@
   section#banner {
     height: var(--mobile-banner-height);
   }
+
+  footer {
+    padding-bottom: calc(2 * var(--mobile-nav-height));
+  }
 }
