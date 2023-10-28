@@ -23,8 +23,8 @@ const Banner = () => {
                 ...BannerData,
                 activeIndex: targetIndex
             });
-            document.querySelector('div[class*="bannerBullet"].active').className = 'bannerBullet';
-            document.querySelector(`div[class*="bannerBullet"]:nth-child(${targetIndex + 1})`).className = 'bannerBullet active';
+            document.querySelector('div[class*="bannerBullet"][class*="active"]').className = styles.bannerBullet;
+            document.querySelector(`div[class*="bannerBullet"]:nth-child(${targetIndex + 1})`).className = `${styles.bannerBullet} ${styles.active}`;
         }
     }
 
@@ -178,10 +178,6 @@ const Banner = () => {
                         FinishSwipe();
                 }}
             >
-                <div className={`desktop`}>
-                    <div className={styles.bannerSwiper} data-direction="left" onClick={TapToSwipeImages}>←</div>
-                    <div className={styles.bannerSwiper} data-direction="right" onClick={TapToSwipeImages}>→</div>
-                </div>
                 <div className={styles.bannerImgContainer}>
                     {
                         images.map((img, i) =>
@@ -193,13 +189,17 @@ const Banner = () => {
                         ))
                     }
                 </div>
+                <div className={`desktop ${styles.bannerSwiperContainer}`}>
+                    <div className={styles.bannerSwiper} data-direction="left" onClick={TapToSwipeImages}>←</div>
+                    <div className={styles.bannerSwiper} data-direction="right" onClick={TapToSwipeImages}>→</div>
+                </div>
             </section>
             <div id={styles.bannerPagination}>
                 {
                     images.map((el, i) => {
                         return (
                             <div className={styles.bannerBullet
-                                + (i === 0 ? ' active' : '')}
+                                + (i === 0 ? ` ${styles.active}` : '')}
                                 key={`banner-bullet${i}`}>
                             </div>
                         );

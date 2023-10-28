@@ -20,8 +20,7 @@ import Access from "./storage/pages/account/Access";
 
 import NoPage from './storage/pages/NoPage';
 import ErrorPage from './storage/pages/ErrorPage';
-
-import submitAccessForm from './storage/routes/actions/submitAccessForm';
+import ServerError from './storage/pages/ServerError';
 
 const router = createBrowserRouter([
     {
@@ -52,22 +51,25 @@ const router = createBrowserRouter([
             {
                 path: "/access",
                 element: <Access />,
-                errorElement: <ErrorPage />,
-                action: submitAccessForm
+                errorElement: <ErrorPage />
             },
             {
                 path: "/account",
                 element: <Account />,
                 errorElement: <ErrorPage />
+            },
+            {
+                path: "/500",
+                element: <ServerError />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "*",
+                element: <NoPage />,
+                errorElement: <ErrorPage />
             }
         ]
-    },
-    {
-        path: "*",
-        element: <NoPage />,
-        errorElement: <ErrorPage />
-    },
-
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

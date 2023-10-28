@@ -13,11 +13,9 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  #root {
-    padding-bottom: calc(2 * var(--mobile-nav-height));
-  }
-
   nav {
+    position: sticky;
+    top: calc(100vh - var(--mobile-nav-height));
     height: var(--mobile-nav-height);
     bottom: 0;
     overflow: visible;
@@ -44,5 +42,9 @@
 
   section#banner {
     height: var(--mobile-banner-height);
+  }
+
+  footer {
+    padding-bottom: calc(2 * var(--mobile-nav-height));
   }
 }

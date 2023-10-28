@@ -63,6 +63,21 @@ const Root = () => {
             </nav>
             <main>
                 <Outlet />
+                <footer>
+                    <div>
+                        Contact:
+                        <ul>
+                            <li>eMail: <i>valentinbanica8@gmail.com</i></li>
+                            <li>
+                                gitHub: <i><a href="https://github.com/Ninel-Valentin">https://github.com/Ninel-Valentin</a></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <span>
+                        Web retail project. All right reserved © Created by Ninel-Valentin
+                        Bănică 2023
+                    </span>
+                </footer>
             </main>
         </>
     );

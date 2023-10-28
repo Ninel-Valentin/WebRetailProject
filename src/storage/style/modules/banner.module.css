@@ -4,6 +4,36 @@ section#banner {
   overflow: hidden;
 }
 
+div.bannerSwiperContainer {
+  position: relative;
+  width: 100%;
+  height: var(--banner-swiper-height);
+  bottom: calc((var(--desktop-banner-height) + var(--banner-swiper-height))/2);
+  z-index: 5;
+}
+
+div.bannerSwiper {
+  background-color: var(--color-bg-gray-transparent);
+  height: var(--banner-swiper-height);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  border: 1px solid white;
+}
+
+div.bannerSwiper[data-direction="left"] {
+  float: left;
+}
+
+div.bannerSwiper[data-direction="right"] {
+  float: right;
+}
+
 div.bannerImgContainer {
   width: 100vw;
   height: 100%;
@@ -13,7 +43,7 @@ div.bannerImgContainer {
   transition: right ease-out 0.3s;
 }
 
-div.bannerImgContainer > img {
+div.bannerImgContainer>img {
   width: 100%;
   height: 100%;
   background-position: center;

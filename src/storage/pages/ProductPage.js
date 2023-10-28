@@ -1,54 +1,42 @@
 import styles from '../style/modules/product.module.css';
-import FetchData from '../scripts/FetchData';
-import { useState } from 'react';
+// import FetchData from '../scripts/FetchData';
+import { useEffect, useState } from 'react';
 
 import { GetCookie, SetCookie } from '../scripts/CookieService';
+import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const ProductPage = () => {
-    // const domain = window.location.host;
-    // const productSku = window.location.href.match(/(?<=\/p\/)[A-Z0-9]*?(?=\?|$)/g).shift();
-    // const thisPage = `http://${domain}/p/${productSku}`
-    // const pageState = {
-    //     "product-sku": productSku
-    // }
-    // window.history.pushState(pageState, "", thisPage);
-    const thisPage = window.location.href;
 
-    const productPageData = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "brand": "TruWave",
-        "name": "Running Shoes",
-        "description": "Enhance your running experience with our high-performance Running Shoes.",
-        "category": "Sports & Outdoors",
-        "sku": "JKL567890",
-        "url": "https://www.product.com/JKL567890",
-        "image": "/storage/images/Sports&Outdoors_4.png",
-        "images": [
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png",
-            "/storage/images/Sports&Outdoors_4.png"
-        ],
-        "offers": {
-            "@type": "Offer",
-            "price": "79.99",
-            "currencySymbol": "$",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition"
+    const [pageData, setPageData] = useState({});
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (pageData) {
+            const path = window.location.pathname;
+            if (!Object.keys(pageData).length || path !== pageData.path) {
+                (async () => {
+                    try {
+                        const domain = window.location.origin.replace(/:\d+/g,'');
+                        await fetch(`${domain}:5000/api${path}`)
+                            .then((response) => response.json())
+                            .then((data) => setPageData({
+                                ...data.recordset.shift(),
+                                path
+                            }));
+                    }
+                    catch (err) {
+                        setPageData({ error: true, message: err })
+                    }
+                })();
+            }
         }
-    };
-    // const [productPageData, setPageData] = useState({});
-    // FetchData("https://run.mocky.io/v3/8bf72c02-5929-46dd-bdef-53c24e81c338"
-    //     , setPageData);
+    }, [pageData, window.location.pathname]);
+
 
     function A2CProduct() {
         const existingCart = JSON.parse(GetCookie('cart')) || [];
-        existingCart.push(productPageData.sku);
+        // existingCart.push(productPageData.sku);
 
         SetCookie('cart', JSON.stringify(existingCart));
     }
@@ -57,58 +45,126 @@ const ProductPage = () => {
 
     }
 
-    return (
-        <>
-            <h3 className={`${styles.lineTitle}`}>
-                <a href='/'
-                    className={styles.breadCrumbsItem}>Home page</a>
-                <br className='mobile' />
-                &nbsp;&rsaquo;&nbsp;
-                <a href={`/cat/${productPageData.category.replace(/\s/g, '')}`}
-                    className={styles.breadCrumbsItem}>{productPageData.category}</a>
-                <br className='mobile' />
-                &nbsp;&rsaquo;&nbsp;
-                <a href={thisPage}
-                    className={styles.breadCrumbsItem}>{productPageData.name}</a>
-            </h3>
-            <h1 className={styles.lineTitle}>{productPageData.name}</h1>
-            <div className={styles.productInfo}>
-                {/* // TODO: add zoom preview effect */}
-                <img className={styles.imgPreview}
-                // src={productPageData.image}
-                ></img>
-                <section className={styles.imgCarousell}>
+    // Content loader functions
+    function LoadBreadCrumbs() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            return (
+                <>
+                    <a href='/'
+                        className={styles.breadCrumbsItem}>Home page</a>
+                    <br className='mobile' />
+                    &nbsp;&rsaquo;&nbsp;
+                    <a href={`/cat/${pageData.Category.replace(/\s/g, '')}`}
+                        className={styles.breadCrumbsItem}>{pageData.Category}</a>
+                    <br className='mobile' />
+                    &nbsp;&rsaquo;&nbsp;
+                    <a href={window.location.href}
+                        className={styles.breadCrumbsItem}>{pageData.Variations.find(x => x.Selected).Value}</a>
+                </>
+            );
+        }
+        // Otherwise load the loading placeholders
+        else {
+            return (
+                <>
+                    {LoadTextPlaceholder('breadCrumbsPlaceholder')}
+                    <br className='mobile' />
+                    &nbsp;&rsaquo;&nbsp;
+                    {LoadTextPlaceholder('breadCrumbsPlaceholder')}
+                    <br className='mobile' />
+                    &nbsp;&rsaquo;&nbsp;
+                    {LoadTextPlaceholder('breadCrumbsPlaceholder')}
+                </>
+            );
+        }
+    }
+
+    function LoadImagePreview() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            return (<img className={`${styles.imgPreview}`}
+                alt=""
+                src={`/storage/images/products/${pageData.Images.find(x => x.IsPrimary).ImageUri}.png`}
+            ></img>);
+        }
+        // Otherwise load the loading placeholders
+        else {
+            return (<div className={`${styles.imgPreview} ${styles.placeholderBackground}`}></div>)
+        }
+    }
+
+    function LoadImages() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            let images = pageData.Images;
+            return (
+                <>
                     {
-                        productPageData.images.map((img, i) => {
-                            return (
-                                <img
-                                    className={styles.imgCarousellItem}
-                                    key={`imgCarousellItem_${i}`}
-                                    onClick={(e) => {
-                                        // TODO: Check the functionality of the switch
-                                        document.querySelector(styles.imgPreview).setAttribute('src', e.target.getAttribute('src'));
-                                    }}
-                                // src={productPageData.img}
-                                ></img>
-                            );
-                        })
+                        //TODO: Add selected border logic
                     }
-                </section>
-            </div>
-            <div className={styles.retailInfo}>
-                <section>
+                    {images.map((img, i) => {
+                        return (
+                            <img
+                                className={`${styles.imgCarousellItem}${i === 0 ? ` ${styles.active}` : ''}`}
+                                alt=""
+                                src={`/storage/images/products/${img.ImageUri}.png`}
+                                key={`imgCarousellItem_${i}`}
+                                onClick={(e) => {
+                                    document.querySelector('img[class*="imgPreview"]').setAttribute('src', e.target.getAttribute('src'));
+                                    document.querySelectorAll('img[class*="imgCarousellItem"]').forEach(x => x.className = x.className.replace('active', '').trim())
+                                    e.target.className += ` ${styles.active}`;
+                                }} />
+                        )
+                    })}
+                    <img
+                        className={styles.imgCarousellItem}
+                        alt={`Brand logo for ${pageData.Brand}`}
+                        src={`/storage/images/brands/${pageData.Brand.replace(/\s/g, '')}.png`}
+                        key={`imgCarousellItem_BrandLogo`}
+                        onClick={(e) => {
+                            document.querySelector('img[class*="imgPreview"]').setAttribute('src', e.target.getAttribute('src'));
+                            document.querySelectorAll('img[class*="imgCarousellItem"]').forEach(x => x.className = x.className.replace('active', '').trim())
+                            e.target.className += ` ${styles.active}`;
+                        }} />
+                </>
+            )
+        }
+        // Otherwise load the loading placeholders
+        else {
+            return (
+                <>
+                    {[...new Array(10)].map((x, i) => {
+                        return (
+                            <img
+                                className={`${styles.imgCarousellItem} ${styles.placeholderBackground}`}
+                                alt=""
+                                key={`imgCarousellItem_placeholder_${i}`} />
+                        )
+                    })}
+                </>
+            )
+        }
+    }
+
+    function LoadSellerData() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            return (
+                <>
                     <div className={styles.retailerInfoRow}>
                         Sold for: &nbsp;
-                        <span id="currency">{
-                            productPageData.offers.currencySymbol ||
-                            productPageData.offers.priceCurrency}
+                        <span id="value">
+                            {pageData.Price}
                         </span>
-                        <span id="value">{productPageData.offers.price}</span>
+                        <span id="currency">
+                            {pageData["Currency Symbol"] || pageData.Currency}
+                        </span>
                     </div>
                     <div className={styles.retailerInfoRow}>
                         {
                             (() => {
-                                const stockState = productPageData.offers.availability.split('/').pop();
+                                const stockState = pageData.Availability.split('/').pop();
                                 switch (stockState) {
                                     case 'InStock':
                                         return (<p style={{ color: 'green' }}>✔ In stock</p>);
@@ -123,38 +179,208 @@ const ProductPage = () => {
                         }
                     </div>
                     <div className={styles.retailerInfoRow}>
-                        Sold and delivered by <span className={styles.brandHighlight}>{productPageData.brand}</span>
+                        Sold and delivered by
+                        <br />
+                        <span className={styles.brandHighlight}>
+                            {pageData.Brand}
+                        </span>
                     </div>
-                </section>
-                {
-                    (() => {
-                        const stockState = productPageData.offers.availability.split('/').pop();
-                        switch (stockState) {
-                            case 'InStock':
-                                return <button
-                                    className={`${styles.mainButton} button`}
-                                    onClick={(e) => {
-                                        A2CProduct();
-                                        UpdateCartIcon();
-                                    }}
-                                >
-                                    Add To Cart
-                                </button>
-                            case 'OutOfStock':
-                                return <button className={`${styles.mainButton} button`}>Notify me when in stock</button>
-                            case 'Discontinued':
-                                return <button disabled className={`${styles.mainButton} disabled button`}>Add To Cart</button>
-                            default:
-                                return null;
+                </>
+            );
+        }
+        // Otherwise load the loading placeholders
+        else {
+            return (
+                <>
+                    <div className={styles.retailerInfoRow}>
+                        Sold for: &nbsp;
+                        {LoadTextPlaceholder('retailerInfoPlaceholder')}
+                    </div>
+                    <div className={styles.retailerInfoRow}>
+                        {LoadTextPlaceholder('retailerInfoPlaceholder')}
+                    </div>
+                    <div className={styles.retailerInfoRow}>
+                        Sold and delivered by
+                        <br />
+                        {LoadTextPlaceholder('retailerInfoPlaceholder')}
+                    </div>
+                </>
+            );
+        }
+    }
+
+    function LoadA2CButton() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            const stockState = pageData.Availability.split('/').pop();
+            switch (stockState) {
+                case 'InStock':
+                    return <button
+                        className={`${styles.mainButton} button`}
+                        onClick={(e) => {
+                            A2CProduct();
+                            UpdateCartIcon();
+                        }}
+                    >
+                        Add To Cart
+                    </button>
+                case 'OutOfStock':
+                    return <button className={`${styles.mainButton} button`}>Notify me when in stock</button>
+                case 'Discontinued':
+                    return <button disabled className={`${styles.mainButton} disabled button`}>Add To Cart</button>
+                default:
+                    return null;
+            }
+        }
+        // Otherwise load the loading placeholders
+        else {
+            return <button disabled className={`${styles.mainButton} inactive button`}>Add To Cart</button>
+        }
+    }
+
+    function LoadVariations() {
+        // Check if the data has loaded
+        if (Object.keys(pageData).length) {
+            return (
+                <>
+                    <div
+                        className={`${styles.customSelect} ${styles.active}`}
+                        onClick={(e) => {
+                            let target = e.target;
+                            while (!target.className.includes(styles.customSelect))
+                                target = target.parentNode;
+
+                            target.className = `${styles.customSelect}${target.className.includes('active') ? '' : ` ${styles.active}`}`;
+                            target.querySelector(`.${styles.customSelectArrow}`).innerText = target.className.includes('active') ? '▼' : '▲';
+                        }}
+                    >
+                        <div className={styles.customSelectDisplay}>
+                            <div className={styles.customSelectPlaceHolder}>{pageData.Variations.find(x => x.Selected).Name}</div>
+                            <div className={styles.customSelectArrow}>▼</div>
+                        </div>
+                        <ul className={styles.customSelectContent}>
+                            {
+                                pageData.Variations.map(x => {
+                                    return (
+                                        <li key={x.Value}>
+                                            <Link
+                                                to={`/p/${x.Value}`}>
+                                                {x.Name}
+                                            </Link>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    </div>
+                    {/* <select
+                        className={styles.dropDown}
+                        defaultValue={pageData.Variations.find(x => x.Selected).Value}
+                    // onChange={
+                    //     (e) => {
+                    //         const sku = e.target.value;
+                    //         if (!window.location.pathname.includes(sku))
+                    //             navigate(`/p/${sku}`);
+                    //         // should use links or smth else
+                    //     }
+                    // }
+                    >
+                        {
+                            pageData.Variations.map(x => {
+                                return (
+                                    
+                                    <option
+                                        value={x.Value}
+                                        key={x.Value}
+                                    >
+                                        <Link to={`p/${x.Value}`}>
+                                            {x.Name}
+                                        </Link>
+                                    </option>
+                                );
+                            })
                         }
-                    })()
-                }
-            </div>
-            <hr className={styles.detailsSeparator} />
-            <h1 className={styles.lineTitle}>Product description</h1>
-            <p className={styles.descriptionBox}>{productPageData.description}</p>
-        </>
-    );
+                    </select> */}
+                </>
+            );
+        }
+        // Otherwise load the loading placeholders
+        else {
+            LoadTextPlaceholder('retailerInfoPlaceholder');
+        }
+    }
+
+    // function LoadImagePreview(){
+    //     // Check if the data has loaded
+    //     if (Object.keys(pageData).length) {
+    //     }
+    //     // Otherwise load the loading placeholders
+    //     else {
+    //     }
+    // }
+
+    function LoadTextPlaceholder(type) {
+        return (
+            <span className={`${styles[type]} ${styles.placeholderBackground}`}></span>
+        );
+    }
+
+    console.log(pageData);
+    if (pageData === undefined) {
+        navigate('/404');
+        return;
+    } else if (pageData.error) {
+        navigate('/500');
+        return;
+    } else {
+        return (
+            <>
+                <Helmet>
+                    <title>Web Retail Project - {Object.keys(pageData).length ? `${pageData.ProductName} - ${pageData.Variations.find(x => x.Selected).Name}` : 'loading...'}</title>
+                </Helmet>
+                <h3 className={`${styles.lineTitle}`}>
+                    {LoadBreadCrumbs()}
+                </h3>
+                <h1 className={
+                    `${styles.lineTitle}${Object.keys(pageData).length ? '' :
+                        ` ${styles.placeholderBackground}`
+                    }`}>
+                    {Object.keys(pageData).length ? `${pageData.ProductName} - ${pageData.Variations.find(x => x.Selected).Name}` : ''}
+                </h1>
+                <div className={styles.productInfo}>
+                    {LoadImagePreview()}
+                    <section className={styles.imgCarousell}>
+                        {LoadImages()}
+                    </section>
+                </div>
+                <div className={styles.retailInfo}>
+                    <section>
+                        {LoadSellerData()}
+                    </section>
+                    {LoadVariations()}
+                    {LoadA2CButton()}
+                </div>
+                <hr className={styles.detailsSeparator} />
+                <h1 className={styles.lineTitle}>Product description</h1>
+                <p className={styles.descriptionBox}>
+                    {Object.keys(pageData).length ?
+                        (
+                            pageData.RenderDescription ?
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: pageData.Description
+                                    }}
+                                ></div>
+                                : pageData.Description
+                        )
+                        : LoadTextPlaceholder()}
+                </p>
+                <hr className={styles.detailsSeparator} />
+                <h1 className={styles.lineTitle}>Product reviews</h1>
+
+            </>
+        );
+    }
 }
 
 export default ProductPage;
