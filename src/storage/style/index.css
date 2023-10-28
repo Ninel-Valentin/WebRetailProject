@@ -30,6 +30,12 @@ body {
   margin: auto;
 }
 
+#root{
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 * {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -48,7 +54,7 @@ body {
 nav {
   background-color: var(--color-bg-light);
   outline: 1px solid var(--color-secondary-blue);
-  position: fixed;
+  position: sticky;
   width: 100vw;
   z-index: 100;
   display: flex;
@@ -91,7 +97,7 @@ p.buttonTxt {
 }
 
 main {
-  display: contents;
+  display: block;
   background-color: var(--color-bg-light);
   width: 100vw;
   outline: 1px solid var(--color-secondary-blue);
@@ -99,7 +105,6 @@ main {
   position: absolute;
   top: var(--desktop-nav-height);
   right: 0;
-  z-index: 0;
 }
 
 *:has(> svg) {

@@ -17,7 +17,8 @@ const ProductPage = () => {
             if (!Object.keys(pageData).length || path !== pageData.path) {
                 (async () => {
                     try {
-                        await fetch(`http://192.168.1.5:5000/api${path}`)
+                        const domain = window.location.origin.replace(/:\d+/g,'');
+                        await fetch(`${domain}:5000/api${path}`)
                             .then((response) => response.json())
                             .then((data) => setPageData({
                                 ...data.recordset.shift(),

@@ -42,6 +42,5 @@ module.exports = {
     connectToDatabase,
     queryDatabase: {
         getProductData
-
     }
 };

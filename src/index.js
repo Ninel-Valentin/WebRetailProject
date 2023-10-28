@@ -57,18 +57,18 @@ const router = createBrowserRouter([
                 path: "/account",
                 element: <Account />,
                 errorElement: <ErrorPage />
+            },
+            {
+                path: "/500",
+                element: <ServerError />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "*",
+                element: <NoPage />,
+                errorElement: <ErrorPage />
             }
         ]
-    },
-    {
-        path: "/500",
-        element: <ServerError />,
-        errorElement: <ErrorPage />
-    },
-    {
-        path: "*",
-        element: <NoPage />,
-        errorElement: <ErrorPage />
     }
 ]);
 
