@@ -19,7 +19,8 @@ SearchPage
 ProductPage
     Picture zoom with bg pos
     quantity on a2c
-    Similar
+    Similar products
     People also buy this together with
     Reviews
     Watched recently
+    Verified purchase

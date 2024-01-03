@@ -1,6 +1,7 @@
 import styles from '../../style/modules/access.module.css';
 
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
@@ -10,6 +11,9 @@ const Access = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Welcome!</title>
+            </Helmet>
             <div className={styles.accessContainer}>
                 <section className={styles.panelContainer} id={styles.backPanels}>
                     <div className={styles.panel}>

@@ -14,9 +14,8 @@
   }
 
   nav {
-    position: sticky;
-    top: calc(100vh - var(--mobile-nav-height));
     height: var(--mobile-nav-height);
+    top: calc(100vh - var(--mobile-nav-height));
     bottom: 0;
     overflow: visible;
   }
@@ -46,5 +45,6 @@
 
   footer {
     padding-bottom: calc(2 * var(--mobile-nav-height));
+    font-size: x-small;
   }
 }

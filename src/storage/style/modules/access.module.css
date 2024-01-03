@@ -1,23 +1,26 @@
 :root {
   --desktop-panel-width: 40vw;
-  --desktop-panel-height: 85vh;
+  --desktop-panel-height: 80vh;
 
   --mobile-panel-large-height: 70vh;
-  --mobile-panel-small-height: calc(
-    var(--desktop-panel-height) - var(--mobile-panel-large-height)
-  );
+  --mobile-panel-small-height: 10vh;
+  --mobile-panel-full-height: calc(var(--mobile-panel-small-height) + var(--mobile-panel-large-height));
+
+  --input-width: 15rem;
+
+  --password-color-weak: #941c1c;
+  --password-color-good: #e5b519;
+  --password-color-strong: #085414;
 }
 
 .accessContainer {
-  background-color: brown;
   width: calc(2 * var(--desktop-panel-width));
   height: var(--desktop-panel-height);
-  margin: 2% 10% 0;
+  margin: 0 10% calc(100vh - var(--desktop-panel-height) - var(--main-padding-top));
   overflow: hidden;
 }
 
 .panelContainer {
-  height: 100%;
   display: flex;
 }
 
@@ -29,7 +32,6 @@ section#frontPanels {
 .panel {
   background-color: var(--color-contrast);
   width: var(--desktop-panel-width);
-  height: var(--desktop-panel-height);
   display: inline-block;
   box-shadow: inset 0 0 1px 0 var(--color-highlight-blue);
   color: var(--color-primary-blue);
@@ -72,6 +74,10 @@ h4 {
   flex-direction: column;
 }
 
+.accessForm {
+  padding-bottom: 1rem;
+}
+
 .formRow {
   margin: 0.2rem 0;
 }
@@ -100,9 +106,9 @@ h4 {
 .accessForm input,
 .accessForm select {
   all: unset;
-  width: 15rem;
+  width: var(--input-width);
   background-color: var(--color-highlight-blue);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: 5px;
@@ -116,6 +122,7 @@ h4 {
 
 #logInButton,
 #signUpButton {
+  cursor: pointer;
   background-color: var(--color-highlight-blue);
   border: 1px solid var(--color-secondary-blue);
   color: var(--color-contrast);
@@ -129,7 +136,7 @@ h4 {
 
 #logInButton:hover,
 #signUpButton:hover {
-  background-color: var(--color-contrast-blue);
+  background-color: var(--color-contrast);
   border: 1px solid var(--color-highlight-blue);
   color: var(--color-primary-blue);
   border-radius: 25px 0;
@@ -142,11 +149,73 @@ h4 {
   border-radius: 25px;
 }
 
+.passwordSection {
+  margin-left: 2rem;
+}
+
+.passwordToggle {
+  height: 1rem;
+  width: 2rem;
+  transform: scale(3);
+  display: inline-flex !important;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.complexityBar {
+  background-color: #999999;
+  width: var(--input-width);
+  height: 2px;
+}
+
+.complexityBar::after {
+  content: '';
+  display: block;
+  height: 2px;
+  transition:
+    background-color .1s ease-out,
+    width .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.complexityBar.grade-0::after {
+  width: 0;
+  background-color: var(--password-color-weak);
+}
+
+.complexityBar.grade-1::after {
+  width: calc(var(--input-width) * .2);
+  background-color: var(--password-color-weak);
+}
+
+.complexityBar.grade-2::after {
+  width: calc(var(--input-width) * .4);
+  background-color: var(--password-color-good);
+}
+
+.complexityBar.grade-3::after {
+  width: calc(var(--input-width) * .6);
+  background-color: var(--password-color-good);
+}
+
+.complexityBar.grade-4::after {
+  width: calc(var(--input-width) * .8);
+  background-color: var(--password-color-strong);
+}
+
+.complexityBar.grade-5::after {
+  width: var(--input-width);
+  background-color: var(--password-color-strong);
+}
+
 /* ?Desktop only */
 @media only screen and (min-width: 600px) {
+  .panel {
+    height: var(--desktop-panel-height);
+  }
+
   section#frontPanels {
     left: 0;
-    transition: left 0.2s ease-in;
+    transition: left 0.1s ease-in;
     width: var(--desktop-panel-width);
   }
 
@@ -156,7 +225,7 @@ h4 {
 
   section#frontPanels .panel {
     position: relative;
-    transition: width 0.2s ease-in;
+    transition: width 0.1s ease-in;
   }
 
   section#frontPanels .panel:first-child {
@@ -192,22 +261,23 @@ h4 {
 
 /* ?Mobile only */
 @media only screen and (max-width: 600px) {
+
+  .accessContainer {
+    height: var(--mobile-panel-full-height);
+  }
+
   .panelContainer {
     flex-direction: column;
   }
 
   section#frontPanels {
     width: 100%;
-    top: calc(
-      -1 * var(--desktop-panel-height) - var(--mobile-panel-small-height)
-    );
-    transition: top 0.2s ease-in;
+    top: 0;
+    transition: top 0.1s ease-in;
   }
 
   section#frontPanels.active {
-    top: calc(
-      -1 * var(--desktop-panel-height) + var(--mobile-panel-large-height)
-    );
+    top: calc(-1 * var(--mobile-panel-full-height));
   }
 
   .panel {

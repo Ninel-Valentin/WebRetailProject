@@ -28,8 +28,8 @@
   }
 
   main {
-    margin-top: var(--desktop-nav-height);
-    min-height: calc(100vh - var(--desktop-nav-height));
+    height: calc(100vh - var(--desktop-nav-height) - var(--main-padding-top));
+    top: var(--desktop-nav-height);
     z-index: 0;
   }
 

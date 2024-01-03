@@ -1,8 +1,9 @@
+const { Consts } = require('../../src/storage/scripts/Consts.js');
+
 const sql = require('mssql');
-var pool;
 
 async function connectToDatabase() {
-
+    var pool;
     const config = {
         user: process.env.REACT_APP_db_User,
         password: process.env.REACT_APP_db_Pass,
@@ -17,30 +18,17 @@ async function connectToDatabase() {
             pool = await sql.connect(config);
             console.log('Successfully connected!');
         } catch (err) {
-            // TODO: replace code from a static map
-            console.log(`ERROR (code 1): Error connecting to the MSSQL database (Retry ${retryCount}).\n Err: ${err}`);
+            console.log(Consts.errors(1, err, retryCount));
         }
         retryCount++;
     }
 
     if (!pool && retryCount == process.env.SERVER_RETRY_LIMIT) {
-        console.error(`Retry limit reached... shutting server down!`)
-        return 1;
+        throw (`Retry limit reached... shutting server down!`)
     }
+    return pool;
 }
-
-async function getProductData(sku) {
-    const queryResult = await pool
-        .request()
-        .input('Sku', sql.VarChar(50), sku)
-        .execute('GetProductData');
-    return queryResult;
-}
-
 
 module.exports = {
-    connectToDatabase,
-    queryDatabase: {
-        getProductData
-    }
+    connectToDatabase
 };

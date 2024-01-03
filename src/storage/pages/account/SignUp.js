@@ -1,14 +1,33 @@
 import styles from '../../style/modules/access.module.css';
 
+import { useState } from 'react';
 import { Form } from "react-router-dom";
+import { HandleSignUpForm, CheckValidity, CheckPasswordStrength, HandleValidityStatus } from '../../scripts/account/SignUpService';
+
+import { ReactComponent as OpenEye } from '../../svg/access/open_eye.svg';
+import { ReactComponent as ClosedEye } from '../../svg/access/closed_eye.svg';
 
 const SignUp = () => {
+    const [passwordData, setPasswordData] = useState({
+        password: true,
+        confirm: true,
+        complexity: 0
+    });
+
     return (
         <>
             <Form
+                autoComplete="off"
                 className={styles.accessForm}
                 id="signUpForm"
-                method='POST'>
+                onSubmit={e => {
+                    e.preventDefault();
+                    const validityCode = CheckValidity(e.target);
+                    if (validityCode) HandleValidityStatus(validityCode);
+                    else HandleSignUpForm(e);
+                }}
+                method='POST'
+            >
                 <div className={styles.formRow}>
                     <label htmlFor="signUpUser">Full name:</label>
                     <input
@@ -28,19 +47,43 @@ const SignUp = () => {
                 </div>
                 <div className={styles.formRow}>
                     <label htmlFor="signUpPassword"><span className={styles.required}>*</span> Password:</label>
-                    <input
-                        required
-                        name="password"
-                        id="signUpPassword"
-                        type="password"></input>
+                    <section className={styles.passwordSection}>
+                        <input
+                            required
+                            name="password"
+                            id="signUpPassword"
+                            type={passwordData.password ? "password" : "text"}
+                            onChange={(e) => {
+                                setPasswordData({
+                                    ...passwordData,
+                                    complexity: CheckPasswordStrength(e.target.value)
+                                });
+                            }}
+                        ></input>
+                        <div
+                            className={styles.passwordToggle}
+                            onClick={() => setPasswordData({ ...passwordData, password: !passwordData.password })}>
+                            {passwordData.password ? <ClosedEye></ClosedEye> : <OpenEye></OpenEye>}
+                        </div>
+                    </section>
+                </div>
+                <div className={styles.formRow}>
+                    <hr className={`${styles.complexityBar} ${styles[`grade-${passwordData.complexity}`]}`} />
                 </div>
                 <div className={styles.formRow}>
                     <label htmlFor="confirmPassword"><span className={styles.required}>*</span> Confirm password:</label>
-                    <input
-                        required
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        type="password"></input>
+                    <section className={styles.passwordSection}>
+                        <input
+                            required
+                            name="confirmPassword"
+                            id="confirmPassword"
+                            type={passwordData.confirm ? "password" : "text"}></input>
+                        <div
+                            className={styles.passwordToggle}
+                            onClick={() => setPasswordData({ ...passwordData, confirm: !passwordData.confirm })}>
+                            {passwordData.confirm ? <ClosedEye></ClosedEye> : <OpenEye></OpenEye>}
+                        </div>
+                    </section>
                 </div>
                 <div className={styles.formRow}>
                     <label htmlFor="birthday">Date of birth:</label>
@@ -62,6 +105,12 @@ const SignUp = () => {
                             value="none"
                             disabled
                             hidden>Select a security question</option>
+                        <option
+                            value="1"> Option 1
+                        </option>
+                        <option
+                            value="2"> Option 2
+                        </option>
                         {/* TODO:Load the options from the database */}
                     </select>
                 </div>

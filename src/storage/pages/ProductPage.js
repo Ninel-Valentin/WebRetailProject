@@ -2,13 +2,25 @@ import styles from '../style/modules/product.module.css';
 // import FetchData from '../scripts/FetchData';
 import { useEffect, useState } from 'react';
 
+import { ReactComponent as FullStar } from '../svg/full_star.svg';
+import { ReactComponent as HalfStar } from '../svg/half_star.svg';
+import { ReactComponent as EmptyStar } from '../svg/empty_star.svg';
+
 import { GetCookie, SetCookie } from '../scripts/CookieService';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+const textToStar = {
+    full: <FullStar></FullStar>,
+    half: <HalfStar></HalfStar>,
+    empty: <EmptyStar></EmptyStar>
+};
+
 const ProductPage = () => {
 
     const [pageData, setPageData] = useState({});
+    const [reviewsData, setReviewsData] = useState({});
+    const [reviewInputData, setReviewInputData] = useState({ hover: false, score: 0, values: new Array(5).fill('empty') });
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,7 +29,7 @@ const ProductPage = () => {
             if (!Object.keys(pageData).length || path !== pageData.path) {
                 (async () => {
                     try {
-                        const domain = window.location.origin.replace(/:\d+/g,'');
+                        const domain = window.location.origin.replace(/:\d+/g, '');
                         await fetch(`${domain}:5000/api${path}`)
                             .then((response) => response.json())
                             .then((data) => setPageData({
@@ -29,20 +41,41 @@ const ProductPage = () => {
                         setPageData({ error: true, message: err })
                     }
                 })();
+
+
             }
         }
     }, [pageData, window.location.pathname]);
 
+    useEffect(() => {
+        if (reviewsData && pageData) {
+            const path = window.location.pathname;
+            if (!Object.keys(reviewsData).length || path !== pageData.path) {
+                (async () => {
+                    try {
+                        const domain = window.location.origin.replace(/:\d+/g, '');
+                        await fetch(`${domain}:5000/api${path}/reviews`)
+                            .then((response) => response.json())
+                            .then((data) => setReviewsData({
+                                ...data.recordset.shift()
+                            }));
+                    }
+                    catch (err) {
+                        setReviewsData({ error: true, message: err })
+                    }
+                })();
+
+
+            }
+        }
+    }, [reviewsData, window.location.pathname]);
+
 
     function A2CProduct() {
         const existingCart = JSON.parse(GetCookie('cart')) || [];
-        // existingCart.push(productPageData.sku);
+        existingCart.push(pageData.Variations.find(x => x.Selected).Value);
 
         SetCookie('cart', JSON.stringify(existingCart));
-    }
-
-    function UpdateCartIcon() {
-
     }
 
     // Content loader functions
@@ -219,7 +252,6 @@ const ProductPage = () => {
                         className={`${styles.mainButton} button`}
                         onClick={(e) => {
                             A2CProduct();
-                            UpdateCartIcon();
                         }}
                     >
                         Add To Cart
@@ -310,6 +342,179 @@ const ProductPage = () => {
         }
     }
 
+    function LoadDescription() {
+        return Object.keys(pageData).length ?
+            (
+                pageData.RenderDescription ?
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: pageData.Description
+                        }}
+                    ></div>
+                    : pageData.Description
+            )
+            : LoadTextPlaceholder()
+    }
+
+    function LoadReviewInputBox() {
+        return (
+            <section>
+                <div className={styles.ratingSummary} id="RatingSummary">
+                    <section className={styles.ratingSummaryHeader}>
+                        <h3>Average: {reviewsData.AverageRatingScore} / 5 </h3>
+                        {LoadReviewStars()}
+                    </section>
+                    <hr />
+                    <section className={styles.ratingSummaryBody}>
+                        <h6> You can leave your opinion here: </h6>
+                        <form>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label htmlFor="RatingSourceValue"> Score: </label>
+                                        </td>
+                                        <td>
+                                            <input required readOnly hidden id="RatingSourceValue" name="RatingSourceValue" type="number" min="0" max="5" step=".5" value={reviewInputData.score}></input>
+                                            <div
+                                                onMouseEnter={() => {
+                                                    setReviewInputData({
+                                                        ...reviewInputData,
+                                                        hover: true
+                                                    });
+                                                }}
+                                                onMouseLeave={() => {
+                                                    setReviewInputData({
+                                                        ...reviewInputData,
+                                                        hover: false,
+                                                        values: [
+                                                            ...new Array(Math.floor(reviewInputData.score)).fill('full'),
+                                                            (Math.floor(reviewInputData.score) === reviewInputData.score ? null : 'half'),
+                                                            ...new Array(5 - Math.ceil(reviewInputData.score)).fill('empty'),
+                                                        ].filter(x => x)
+                                                    });
+                                                }}
+                                                className={styles.ratingInputWrapper}>
+                                                {
+                                                    reviewInputData.values.map((reviewInputValue, reviewInputIndex) =>
+                                                        <div
+                                                            key={`reviewInput-${reviewInputIndex}`}
+                                                            onMouseMove={(e) => {
+                                                                let divParent = e.target.parentNode;
+                                                                divParent = divParent.nodeName === 'DIV' ? divParent : divParent.parentNode.parentNode;
+
+                                                                const index = [...divParent.parentNode.childNodes].indexOf(divParent);
+
+                                                                const newReviewInputData = {
+                                                                    ...reviewInputData,
+                                                                    values: reviewInputData.values.map((x, i) =>
+                                                                        (i > index ? 'empty' : (i < index ? 'full' : x))
+                                                                    ),
+                                                                    hover: true
+                                                                };
+
+                                                                const rect = e.target.getBoundingClientRect();
+                                                                const mouseX = e.clientX - rect.left;
+                                                                const containerWidth = rect.width;
+
+                                                                if (mouseX < containerWidth / 2) {
+                                                                    // left half
+
+                                                                    newReviewInputData.values = newReviewInputData.values.map((x, i) =>
+                                                                        (i === index ? 'half' : x)
+                                                                    );
+                                                                } else {
+                                                                    // right half
+
+                                                                    newReviewInputData.values = newReviewInputData.values.map((x, i) =>
+                                                                        (i === index ? 'full' : x)
+                                                                    );
+                                                                }
+                                                                // Compare if anything changed
+                                                                if (reviewInputData.hover !== newReviewInputData.hover ||
+                                                                    reviewInputData.values.filter((x, i) => newReviewInputData.values[i] !== x).length)
+                                                                    setReviewInputData(newReviewInputData);
+                                                            }}
+                                                            onClick={(e) => {
+                                                                let divParent = e.target.parentNode;
+                                                                divParent = divParent.nodeName === 'DIV' ? divParent : divParent.parentNode.parentNode;
+
+                                                                let score = [...divParent.parentNode.childNodes].indexOf(divParent);
+
+                                                                const rect = e.target.getBoundingClientRect();
+                                                                const mouseX = e.clientX - rect.left;
+                                                                const containerWidth = rect.width;
+
+                                                                if (mouseX < containerWidth / 2) {
+                                                                    score += .5;
+                                                                } else {
+                                                                    score++;
+                                                                }
+
+                                                                setReviewInputData({
+                                                                    ...reviewInputData,
+                                                                    score
+                                                                });
+                                                            }}
+                                                            className={styles.ratingInput}>
+                                                            {textToStar[reviewInputValue]}
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label htmlFor="ReviewTitle"> Title: </label>
+                                        </td>
+                                        <td>
+                                            <input required max="50" type="text" id="ReviewTitle" name="ReviewTitle"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label htmlFor="ReviewBody"> Review: </label>
+                                        </td>
+                                        <td>
+                                            <textarea required max="255" type="text" id="ReviewBody" name="ReviewBody"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="2">
+                                            <input type="submit"></input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </section>
+                </div>
+            </section >
+        )
+    }
+
+    function LoadReviewStars() {
+        return (
+            <div className={styles.averageDisplay}>
+                {Object.keys(reviewsData).length ?
+                    (
+                        [
+                            ...new Array(Math.floor(reviewsData.AverageRatingScore)).fill(undefined).map((x, i) => {
+                                return <FullStar key={`FullStar_${i}`}></FullStar>;
+                            }),
+                            (reviewsData === Math.floor(reviewsData.AverageRatingScore) ? null : <HalfStar key="HalfStar"></HalfStar>),
+                            ...new Array(5 - Math.ceil(reviewsData.AverageRatingScore)).fill(undefined).map((x, i) => {
+                                return <EmptyStar key={`EmptyStar_${i}`}></EmptyStar>;
+                            })
+
+                        ] //.filter(x => x) // Used to remove the null
+                    )
+                    : LoadTextPlaceholder()}
+            </div>
+        );
+    }
+
     // function LoadImagePreview(){
     //     // Check if the data has loaded
     //     if (Object.keys(pageData).length) {
@@ -325,7 +530,6 @@ const ProductPage = () => {
         );
     }
 
-    console.log(pageData);
     if (pageData === undefined) {
         navigate('/404');
         return;
@@ -354,6 +558,10 @@ const ProductPage = () => {
                     </section>
                 </div>
                 <div className={styles.retailInfo}>
+                    <h3 className={styles.reviewSummaryText}>
+                        <a href="#RatingSummary"> Leave a review </a>: {reviewsData.AverageRatingScore} / 5
+                        {LoadReviewStars()}
+                    </h3>
                     <section>
                         {LoadSellerData()}
                     </section>
@@ -362,21 +570,14 @@ const ProductPage = () => {
                 </div>
                 <hr className={styles.detailsSeparator} />
                 <h1 className={styles.lineTitle}>Product description</h1>
-                <p className={styles.descriptionBox}>
-                    {Object.keys(pageData).length ?
-                        (
-                            pageData.RenderDescription ?
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: pageData.Description
-                                    }}
-                                ></div>
-                                : pageData.Description
-                        )
-                        : LoadTextPlaceholder()}
-                </p>
+                <div className={styles.contentBox}>
+                    {LoadDescription()}
+                </div>
                 <hr className={styles.detailsSeparator} />
                 <h1 className={styles.lineTitle}>Product reviews</h1>
+                <div className={styles.contentBox}>
+                    {LoadReviewInputBox()}
+                </div >
 
             </>
         );
