@@ -52,6 +52,7 @@ const SignUp = () => {
                             required
                             name="password"
                             id="signUpPassword"
+                            data-password-toggle
                             type={passwordData.password ? "password" : "text"}
                             onChange={(e) => {
                                 setPasswordData({
@@ -77,6 +78,7 @@ const SignUp = () => {
                             required
                             name="confirmPassword"
                             id="confirmPassword"
+                            data-password-toggle
                             type={passwordData.confirm ? "password" : "text"}></input>
                         <div
                             className={styles.passwordToggle}

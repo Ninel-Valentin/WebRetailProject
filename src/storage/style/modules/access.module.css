@@ -15,18 +15,19 @@
 
 .accessContainer {
   width: calc(2 * var(--desktop-panel-width));
-  height: var(--desktop-panel-height);
+  min-height: calc(100vh - var(--desktop-nav-height) - var(--main-padding-top) - var(--footer-min-height));
   margin: 0 10% calc(100vh - var(--desktop-panel-height) - var(--main-padding-top));
   overflow: hidden;
+  display: flex;
 }
 
 .panelContainer {
   display: flex;
 }
 
-section#frontPanels {
+section#frontPanel {
   position: relative;
-  top: calc(-1 * var(--desktop-panel-height));
+  /* top: calc(-1 * var(--desktop-panel-height)); */
 }
 
 .panel {
@@ -149,10 +150,6 @@ h4 {
   border-radius: 25px;
 }
 
-.passwordSection {
-  margin-left: 2rem;
-}
-
 .passwordToggle {
   height: 1rem;
   width: 2rem;
@@ -209,18 +206,20 @@ h4 {
 
 /* ?Desktop only */
 @media only screen and (min-width: 600px) {
-  .panel {
-    height: var(--desktop-panel-height);
+
+  .passwordSection {
+    margin-left: 2rem;
   }
 
   section#frontPanels {
-    left: 0;
+    position: relative;
+    left: calc(-2* var(--desktop-panel-width));
     transition: left 0.1s ease-in;
     width: var(--desktop-panel-width);
   }
 
   section#frontPanels.active {
-    left: var(--desktop-panel-width);
+    left: calc(-1* var(--desktop-panel-width));
   }
 
   section#frontPanels .panel {
@@ -261,9 +260,9 @@ h4 {
 
 /* ?Mobile only */
 @media only screen and (max-width: 600px) {
-
   .accessContainer {
     height: var(--mobile-panel-full-height);
+    flex-direction: column;
   }
 
   .panelContainer {
@@ -277,6 +276,7 @@ h4 {
   }
 
   section#frontPanels.active {
+    position: relative;
     top: calc(-1 * var(--mobile-panel-full-height));
   }
 
@@ -301,8 +301,17 @@ h4 {
     height: var(--mobile-panel-large-height);
   }
 
+  .accessForm input:not(input[data-password-toggle]),
+  .accessForm select {
+    margin-left: -2rem;
+  }
+
   .accessForm input,
   .accessForm select {
     height: 1.5rem;
+  }
+
+  .formRow {
+    width: 100%;
   }
 }

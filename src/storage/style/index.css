@@ -67,7 +67,8 @@ nav {
   background-color: var(--color-bg-light);
   outline: 1px solid var(--color-secondary-blue);
   position: absolute;
-  top: 0;
+  bottom: 0;
+  left: 0;
   width: 100vw;
   z-index: 100;
   display: flex;
@@ -131,8 +132,13 @@ svg {
   aspect-ratio: 1;
 }
 
-svg.lightSvg path {
+svg path,
+svg.blueSvg path {
   fill: var(--color-secondary-blue);
+}
+
+svg.whiteSVG path {
+  fill: var(--color-bg-light-hover);
 }
 
 /* width */
