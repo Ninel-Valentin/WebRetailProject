@@ -1,3 +1,5 @@
+const sql = require('mssql');
+
 async function getProductData(pool, sku) {
     return await pool
         .request()

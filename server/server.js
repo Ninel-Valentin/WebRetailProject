@@ -11,7 +11,7 @@ const ipv6 = '2a02:2f0e:d10b:dd00:d9d8:1735:6efe:3fd1';
 
 const { connectToDatabase } = require('./database/db-config.js');
 const { getProductData, getReviewData } = require('./database/db-prod-config.js');
-const { checkMail } = require('./database/db-user-config.js');
+const { CheckEmailUniqueness } = require('./database/db-user-config.js');
 
 app.get('/api/p/:sku', async (req, res) => {
     // Change '*' to your domain for production
@@ -53,14 +53,25 @@ app.post('/api/post/create-account', async (req, res) => {
     // Change '*' to your domain for production
     res.header('Access-Control-Allow-Origin', '*');
 
-    const userData = new URLSearchParams(req.url.split('?').pop());
+    const dataParams = new URLSearchParams(req.url.split('?').pop());
+    const userData = ParseDataParams(dataParams);
 
+    const isEmailUnique = await CheckEmailUniqueness(pool, userData.email);
+    if (isEmailUnique.recordset[0].Count)
+        prompt('An account already exists on this email account!');
+    else {
+        // Create account here
+    }
 
-
-    res.json({ "msg": "ok" });
+    res.json({ "status": "ok" });
 });
 
-const pool = connectToDatabase();
+
+var pool;
+(async () => {
+    pool = await connectToDatabase();
+})();
+
 
 app.listen(serverPort, ipv4, () => {
     console.log(`Server listening on port ${ipv4}:${serverPort}`);
@@ -79,4 +90,16 @@ function ParseValuesToJson(value) {
         try { return JSON.parse(value); }
         catch (ex) { }
     return value;
+}
+
+/**
+ * Parses an URLParams object into an key-value pair object
+ * @param {*} params 
+ * @returns 
+ */
+function ParseDataParams(params) {
+    const obj = {};
+    for (let [key, value] of [...params.entries()])
+        obj[key] = value;
+    return obj;
 }

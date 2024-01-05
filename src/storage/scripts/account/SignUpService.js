@@ -1,4 +1,4 @@
-const Consts = require('../Consts.js').default.default;
+const Consts = require('../Consts.js');
 
 async function HandleSignUpFormRequest(sender) {
     console.log(sender);
