@@ -8,7 +8,7 @@ import { ReactComponent as ClosedEye } from '../../svg/access/closed_eye.svg';
 
 const LogIn = () => {
     const [passwordData, setPasswordData] = useState({
-        password: true
+        passwordIsHidden: true
     });
 
     return (
@@ -24,6 +24,8 @@ const LogIn = () => {
                         placeholder="john.doe@domain.org"
                         name="email"
                         id="logInEmail"
+                        minLength="5"
+                        maxLength="100"
                         type="email"></input>
                 </div>
                 <div className={styles.formRow}>
@@ -35,12 +37,14 @@ const LogIn = () => {
                             name="password"
                             id="logInPassword"
                             data-password-toggle
-                            type={passwordData.password ? "password" : "text"}
+                            minLength="5"
+                            maxLength="85"
+                            type={passwordData.passwordIsHidden ? "password" : "text"}
                         ></input>
                         <div
                             className={styles.passwordToggle}
-                            onClick={() => setPasswordData({ ...passwordData, password: !passwordData.password })}>
-                            {passwordData.password ?
+                            onClick={() => setPasswordData({ ...passwordData, passwordIsHidden: !passwordData.passwordIsHidden })}>
+                            {passwordData.passwordIsHidden ?
                                 <ClosedEye className='whiteSVG'>
                                 </ClosedEye>
                                 :

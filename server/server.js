@@ -3,22 +3,21 @@ const app = express();
 
 const serverPort = process.env.PORT || 5000;
 const localhost = 'http://localhost';
-// const ipv4 = '5.14.152.178';
-// const ipv4 = '192.168.0.194';
 const ipv4 = '127.0.0.1';
 const ipv6 = '2a02:2f0e:d10b:dd00:d9d8:1735:6efe:3fd1';
 
 
-const { connectToDatabase } = require('./database/db-config.js');
-const { getProductData, getReviewData } = require('./database/db-prod-config.js');
-const { CheckEmailUniqueness } = require('./database/db-user-config.js');
+const { ConnectToDatabase } = require('./database/db-config.js');
+const { GetProductData, GetReviewData } = require('./database/db-prod-config.js');
+const { CheckEmailUniqueness, CreateAccount } = require('./database/db-user-config.js');
+const { GetSecQuestions } = require('./database/db-access-config.js');
 
 app.get('/api/p/:sku', async (req, res) => {
     // Change '*' to your domain for production
     res.header('Access-Control-Allow-Origin', '*');
 
     try {
-        const result = await getProductData(pool, req.params.sku);
+        const result = await GetProductData(pool, req.params.sku);
         res.json(ParseValuesToJson(result));
     } catch (err) {
         console.error(`Error querying the database`, err);
@@ -31,14 +30,25 @@ app.get('/api/p/:sku/reviews', async (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
 
     try {
-        const result = await getReviewData(pool, req.params.sku);
+        const result = await GetReviewData(pool, req.params.sku);
         res.json(ParseValuesToJson(result));
     } catch (err) {
         console.error(`Error querying the database`, err);
         res.status(500).json({ error: 'Server error' });
     }
-
 });
+
+app.get('/api/secQ', async (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+
+    try {
+        const result = await GetSecQuestions(pool);
+        res.json(ParseValuesToJson(result));
+    } catch (err) {
+        console.error(`Error querying the database`, err);
+        res.status(500).json({ error: 'Server error' });
+    }
+})
 
 // Handling preflight requests
 app.options('/api/post/create-account', (req, res) => {
@@ -49,6 +59,7 @@ app.options('/api/post/create-account', (req, res) => {
 
     res.status(200).send();
 });
+
 app.post('/api/post/create-account', async (req, res) => {
     // Change '*' to your domain for production
     res.header('Access-Control-Allow-Origin', '*');
@@ -57,21 +68,26 @@ app.post('/api/post/create-account', async (req, res) => {
     const userData = ParseDataParams(dataParams);
 
     const isEmailUnique = await CheckEmailUniqueness(pool, userData.email);
-    if (isEmailUnique.recordset[0].Count)
-        prompt('An account already exists on this email account!');
-    else {
-        // Create account here
+    if (isEmailUnique.recordset[0].Count) {
+        res.status(409).json({
+            "statusCode": "409",
+            "message": "Conflict: Email already exists"
+        });
     }
-
-    res.json({ "status": "ok" });
+    else {
+        const result = await CreateAccount(pool, userData);
+        res.json({
+            "statusCode": "200",
+            "message": "OK: Account created",
+            result
+        });
+    }
 });
-
 
 var pool;
 (async () => {
-    pool = await connectToDatabase();
+    pool = await ConnectToDatabase();
 })();
-
 
 app.listen(serverPort, ipv4, () => {
     console.log(`Server listening on port ${ipv4}:${serverPort}`);

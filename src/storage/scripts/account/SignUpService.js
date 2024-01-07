@@ -1,8 +1,6 @@
-const Consts = require('../Consts.js');
+const { Consts } = require('../Consts.js');
 
 async function HandleSignUpFormRequest(sender) {
-    console.log(sender);
-
     const options = {
         method: 'POST',
         headers: {
@@ -28,6 +26,10 @@ function CheckValidity(sender) {
         return Consts.codeToValidityStatus.ShortPassword;
     if (CheckPasswordFormat(sender.password.value))
         return Consts.codeToValidityStatus.InvalidPassword;
+    if (CheckPasswordStrength(sender.password.value) < 3)
+        return Consts.codeToValidityStatus.WeakPassword;
+    if (sender.secQuestion.value === 'none')
+        return Consts.codeToValidityStatus.SecQNotSelected;
 
     return Consts.codeToValidityStatus.OK;
 }
@@ -53,15 +55,23 @@ function HandleValidityStatus(status) {
         case Consts.codeToValidityStatus.NotMatch:
             alert('Password does not match Confirm Password!');
             break;
-        case Consts.codeToValidityStatus.ShortPassword:
-            alert('Password is too short! It needs to be at least 5 characters long.');
-            break;
         case Consts.codeToValidityStatus.InvalidPassword:
             alert('Password can only be made up by letters, digits and any of the following characters _-!@<>+=');
+            break;
+        case Consts.codeToValidityStatus.WeakPassword:
+            alert('Password is too weak! Please at least 3 of the following: Digits, Lowercase, UpperCase letters, any of the following characters _-!@<>+=');
+            break;
+        case Consts.codeToValidityStatus.SecQNotSelected:
+            alert('Please select a security question from the list!');
             break;
         default:
             console.error(`Unknown validity status: ${status}`);
     }
 }
 
-module.exports = { HandleSignUpForm: HandleSignUpFormRequest, CheckValidity, CheckPasswordStrength, HandleValidityStatus };
+module.exports = {
+    HandleSignUpFormRequest,
+    CheckValidity,
+    CheckPasswordStrength,
+    HandleValidityStatus
+};

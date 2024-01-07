@@ -2,7 +2,7 @@ const { Consts } = require('../../src/storage/scripts/Consts.js');
 
 const sql = require('mssql');
 
-async function connectToDatabase() {
+async function ConnectToDatabase() {
     var pool;
     const config = {
         user: process.env.REACT_APP_db_User,
@@ -30,5 +30,5 @@ async function connectToDatabase() {
 }
 
 module.exports = {
-    connectToDatabase
+    ConnectToDatabase
 };

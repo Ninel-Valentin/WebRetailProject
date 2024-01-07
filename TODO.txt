@@ -6,9 +6,9 @@ Users:
 
 Database
     Alter database to support more pictures
-    create sproc to get main page data
 
 General
+    Modify EncryptionService.js to calculate PI? - not really needed because PI won't change
     Add searchbar to the navbar
     Finish the counter of the shopping cart number
     discount tag
@@ -18,9 +18,13 @@ SearchPage
 
 ProductPage
     Picture zoom with bg pos
+        Switch pictures to blobs for database
     quantity on a2c
     Similar products
     People also buy this together with
     Reviews
+        Verified purchase
     Watched recently
-    Verified purchase
+
+UserPage
+    Coupon or something on user's birthday

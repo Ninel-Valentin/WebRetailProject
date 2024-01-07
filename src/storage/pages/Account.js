@@ -10,6 +10,7 @@ const Account = () => {
         if (!accountCookies) {
             navigate('/access', { replace: true })
         }
+        // eslint-disable-next-line
     }, [accountCookies]);
 
     return (

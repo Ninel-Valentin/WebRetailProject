@@ -12,10 +12,11 @@ class Consts {
     }
 
     static codeToValidityStatus = {
-        OK: 0,
-        NotMatch: 1,
-        ShortPassword: 2,
-        InvalidPassword: 3
+        OK: 'OK',
+        NotMatch: 'NotMatch',
+        SecQNotSelected: 'SecQNotSelected',
+        InvalidPassword: 'InvalidPassword',
+        WeakPassword: 'WeakPassword'
     };
 }
 

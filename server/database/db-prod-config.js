@@ -1,13 +1,13 @@
 const sql = require('mssql');
 
-async function getProductData(pool, sku) {
+async function GetProductData(pool, sku) {
     return await pool
         .request()
         .input('Sku', sql.VarChar(50), sku)
         .execute('GetProductData');
 }
 
-async function getReviewData(pool, sku) {
+async function GetReviewData(pool, sku) {
     return await pool
         .request()
         .input('Sku', sql.VarChar(50), sku)
@@ -15,6 +15,6 @@ async function getReviewData(pool, sku) {
 }
 
 module.exports = {
-    getProductData,
-    getReviewData
+    GetProductData,
+    GetReviewData
 };
