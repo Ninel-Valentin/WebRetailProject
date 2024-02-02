@@ -15,8 +15,10 @@ import Home from './storage/pages/Home';
 import ProductPage from './storage/pages/ProductPage';
 import CategoryPage from './storage/pages/CategoryPage';
 import BrandPage from './storage/pages/BrandPage';
-import Account from "./storage/pages/Account";
-import Access from "./storage/pages/account/Access";
+import Access from "./storage/pages/access/Access";
+
+import Account from "./storage/pages/account/Account";
+import Verification from "./storage/pages/account/Verification";
 
 import NoPage from './storage/pages/NoPage';
 import ErrorPage from './storage/pages/ErrorPage';
@@ -51,6 +53,11 @@ const router = createBrowserRouter([
             {
                 path: "/access",
                 element: <Access />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "/account/verification",
+                element: <Verification />,
                 errorElement: <ErrorPage />
             },
             {

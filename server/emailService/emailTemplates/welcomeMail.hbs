@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body style="margin:0;">
+    <div>
+        <main style="
+    width:80vw;
+    margin: 5vmin auto;
+    ">
+            <section style="
+            background-color: #002030;
+            color:#f1edee;
+            width:80vw;
+            min-height: 10vh;
+            padding:max(3vw,3vh) 0;
+            border-radius: 25px;
+            margin:auto;
+        ">
+                <h1 style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                text-align: center;
+            ">
+                    Welcome to endless good offers
+                    <br />
+                    <span style="
+                font-size: xx-large;
+                font-weight: bolder;
+                ">
+                        {{username}}
+                    </span>
+                </h1>
+            </section>
+            <hr style="
+            margin:0;
+            outline:5px dotted white;
+        " />
+            <section style="
+            width:80vw;
+            min-height: 20vh;
+            background: #2e4a5c;
+            color:#f1edee;
+            text-align: center;
+            padding:min(3vw,3vh) 0;
+            font-size: x-large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 25px;
+            margin:auto;
+        ">
+                Thank you for creating an account with us!
+                <br />
+                For an additional touch of security, activate your account by clicking on this link <a style="
+                    text-decoration: none;
+                    color:#94a8e9;
+                " href="{{activateLink}}">Activate account</a>!
+
+            </section>
+            <hr style="
+            margin:0;
+            outline:5px dotted white;
+        " />
+            <section style="
+            background-color: #002030;
+            color:#f1edee;
+            width:80vw;
+            min-height: 5vh;
+            text-align: center;
+            padding:min(3vw,3vh) 0;
+            font-size: large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 25px;
+            margin:auto;
+        ">
+                If this was not you and someone used your email press here <a style="
+            text-decoration: none;
+            color:#94a8e9;
+            " href="{{deactivateLink}}">Learn more</a>.
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

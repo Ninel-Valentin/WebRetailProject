@@ -2,9 +2,8 @@ import styles from '../../style/modules/access.module.css';
 
 import { useEffect, useState } from 'react';
 import { Form } from "react-router-dom";
-import { HandleSignUpFormRequest, CheckValidity, CheckPasswordStrength, HandleValidityStatus } from '../../scripts/account/SignUpService';
+import { HandleSignUpFormRequest, CheckValidity, CheckPasswordStrength, HandleValidityStatus } from '../../scripts/account/SignUpService.js';
 import { ConnectToAccount } from '../../scripts/account/LogInService.js';
-import { SendWelcomeEmail } from '../../scripts/emailService/emailService.js'
 
 import { ReactComponent as OpenEye } from '../../svg/access/open_eye.svg';
 import { ReactComponent as ClosedEye } from '../../svg/access/closed_eye.svg';
@@ -52,9 +51,6 @@ const SignUp = () => {
                         const response = await HandleSignUpFormRequest(e);
                         if (response.statusCode === '409')
                             alert('An account using this email already exists!');
-                        else if (response.statusCode === '200') {
-                            SendWelcomeEmail(response.result.recordset);
-                        }
                         else
                             console.log(response.statusCode)
                     };

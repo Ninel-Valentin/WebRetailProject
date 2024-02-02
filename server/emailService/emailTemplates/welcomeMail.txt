@@ -1,0 +1,9 @@
+SOME_LOGO_HERE
+Welcome to endless good offers
+{{username}}
+
+Thank you for creating an account with us!
+
+For an additional touch of security, activate your account by clicking on this link {{activateLink}}
+
+If this was not you and someone used your email press here {{deactivateLink}}

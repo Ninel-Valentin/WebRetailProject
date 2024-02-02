@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
 
+const { EmailService } = require('./emailService/emailService.js');
+
 const serverPort = process.env.PORT || 5000;
 const localhost = 'http://localhost';
 const ipv4 = '127.0.0.1';
-const ipv6 = '2a02:2f0e:d10b:dd00:d9d8:1735:6efe:3fd1';
-
+// const ipv6 = '2a02:2f0e:d10b:dd00:d9d8:1735:6efe:3fd1';
 
 const { ConnectToDatabase } = require('./database/db-config.js');
 const { GetProductData, GetReviewData } = require('./database/db-prod-config.js');
@@ -76,10 +77,20 @@ app.post('/api/post/create-account', async (req, res) => {
     }
     else {
         const result = await CreateAccount(pool, userData);
+        var finalData = {};
+        // Append all tables of results into 1 object
+        result.recordsets.map(x => {
+            finalData = {
+                ...finalData,
+                ...x[0]
+            };
+        });
+        userData.verificationToken = finalData.VerificationToken
+        EmailService.SendWelcomeEmail(userData);
         res.json({
-            "statusCode": "200",
-            "message": "OK: Account created",
-            result
+            statusCode: 200,
+            message: "OK: Account created",
+            SessionToken: finalData.SessionToken
         });
     }
 });

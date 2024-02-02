@@ -21,12 +21,12 @@ async function CreateAccount(pool, userData) {
 
     return await pool
         .request()
-        .input('Name', sql.VarChar(100), user ?? 'NULL')
+        .input('Name', sql.VarChar(100), user || null)
         .input('Email', sql.VarChar(100), email)
         .input('Password', sql.VarChar(255), encryptedPassword)
         .input('SecurityQuestionId', sql.VarChar(50), secQuestion)
         .input('SecurityAnswer', sql.VarChar(100), secAnswer)
-        .input('Birthday', sql.Date, birthday)
+        .input('Birthday', sql.Date, birthday || null)
         .execute('CreateUser');
 }
 

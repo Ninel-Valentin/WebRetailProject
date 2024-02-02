@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { GetCookie } from "../scripts/CookieService";
+import { GetCookie } from "../../scripts/CookieService";
 import { useEffect } from "react";
 
 const Account = () => {
