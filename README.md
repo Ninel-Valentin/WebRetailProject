@@ -1,5 +1,10 @@
-# React basic
+# WebRetailProject
 
-[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build [React](https://reactjs.org/) apps in minutes. Use this repo with the [React quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=react) to build and customize a new static site.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a in development web retail application that aims to replicate large scale retail websites like eMag or Amazon with functionalities as follows:
+- User/Seller account management
+- Ads
+- Suggested/Recently browsed items
+- People usually buy this item with the following items...
+- Campaign banners
+- Sell your own products
+- Both Desktop and Mobile UIs
